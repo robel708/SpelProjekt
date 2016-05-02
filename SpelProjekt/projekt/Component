@@ -1,0 +1,60 @@
+package Main;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+
+public class Component extends JLabel {
+	
+	private Color color;
+	private int xpos;
+	private int ypos;
+	private int WIDTH;
+	private int HEIGHT;
+	private BufferedImage image;
+
+	public Component(BufferedImage image){
+		this.image = image;
+	}
+	
+	public Component(){
+		
+	}
+	
+	public void setColor(Color color){
+		this.color = color;
+	}
+	
+	public void setPosition(int xpos, int ypos){
+		this.xpos = xpos;
+		this.ypos = ypos;
+	}
+	
+	public void setBounds(int WIDTH, int HEIGHT){
+		this.WIDTH = WIDTH;
+		this.HEIGHT = HEIGHT;
+	}
+	@Override
+	protected void paintComponent(Graphics g){
+		System.out.println(xpos);
+		System.out.println(ypos);
+		System.out.println(WIDTH);
+		System.out.println(HEIGHT);
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+		if(image == null){
+			g2.setColor(color);
+			g2.fillRect(xpos, ypos, WIDTH, HEIGHT);
+		}
+		else{
+			g2.drawImage(image,null, xpos,ypos);
+		}
+	}
+	
+
+	
+}
