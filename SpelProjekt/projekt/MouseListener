@@ -1,0 +1,43 @@
+package Main;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class MouseListener extends MouseAdapter implements MouseMotionListener  {;
+	private Timer timer;
+	//private Feather feather;
+	
+	
+	public MouseListener(){ //Feather feather
+		//this.feather = feather;
+		this.timer = new Timer();
+	}
+
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		//feather.updatePostion(e.getX());
+		
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent e){
+		timer.scheduleAtFixedRate(new TimerTask() {
+			  @Override
+			  public void run(){
+				  //feather.updateStrength();
+				
+			  }
+			}, 0 , 100);
+	}
+	
+	@Override
+	public void mouseReleased(MouseEvent e){
+		//feather.resetStrength();
+		timer.cancel();
+	}
+
+}
