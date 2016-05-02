@@ -1,0 +1,99 @@
+package Main;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+
+public class Game {
+	public JFrame frame;
+	public JLayeredPane content;
+	//private ArrayList<Ball> balls;
+	private int lifes;
+	private double betweenBalls; //i ms
+	private int score;
+	private double factor = -0.0333333333;
+	
+	public Game (){
+		
+	}
+	
+	public void init(){
+		this.lifes = 3;
+		this.betweenBalls = 3000; //dvs 3 sekunder
+		
+		//balls = new ArrayList<Ball>();
+		frame = new JFrame("FeatherDeath");
+		frame.setLayout(new BorderLayout());
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		
+		content = new JLayeredPane();
+		content.setOpaque(true);
+		content.setPreferredSize(new Dimension(Main.GAMEWIDTH, Main.GAMEHEIGHT));
+		frame.add(content, BorderLayout.CENTER);
+		//Feather feather = new Feather();
+		//content.add(feather, new Integer(1));
+		Component background = new Component();
+		background.setColor(Color.YELLOW);
+		background.setPosition(0, 0);
+		background.setSize(content.getPreferredSize());
+		background.setBounds(Main.GAMEWIDTH, Main.GAMEHEIGHT);
+		//background.setSize(Main.GAMEWIDTH, Main.GAMEHEIGHT);
+		content.add(background, new Integer(1));
+		frame.pack();
+		frame.setVisible(true);
+		while(true){
+			
+		}
+		
+		
+		
+		
+	}
+	
+	private void paintAll(){
+		updateAll();
+		//feather.repaint();
+		//for(Ball ball : balls){
+			//ball.repaint();
+		//}		
+	}
+	
+	private void updateAll(){
+		//for(Ball ball :balls){
+			//ball.update();	
+		//}
+	}
+	
+	private void calculateDelay(){
+		//(-1/30)*x^2 + 3000   - funktionen för att beräkna delay i ms mellan bollar. x = nuv.score.
+		double quadX = score*score;
+		betweenBalls = factor*quadX + 3000;
+	}
+	
+	public double getDelay(){
+		calculateDelay();
+		return betweenBalls;
+	}
+	
+	public void constructBall(){
+		//Ball ball = new Ball();
+		//balls.add(ball);
+	}
+	
+	public void killBall(){ //Ball ball i argument
+		//balls.remove(ball);
+	}
+	
+	public void updateScore(){
+		this.score = score+10;
+	}
+
+}
