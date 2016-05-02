@@ -1,0 +1,33 @@
+package Main;
+
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class Main {
+	//public static Physics physicsEngine;
+	public static Game game;
+	public static final int GAMEHEIGHT = 500;
+	public static final int GAMEWIDTH = 1000;
+	
+
+	public static void main(String[] args){
+		//physicsEngine = new PhysicsEngine();
+		game = new Game();
+		game.init();
+	}
+	
+	public static void run(){
+		
+	}
+	
+	public static void start(){
+		
+	}
+	
+	public static void viewHighScore(){
+		
+	}
+	
+	
+}
